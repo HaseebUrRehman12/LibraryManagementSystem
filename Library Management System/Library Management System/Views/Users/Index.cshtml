@@ -1,0 +1,33 @@
+﻿@model IEnumerable<Library_Management_System.Models.User>
+
+<h2>Users</h2>
+<a href="/Users/Create" class="btn btn-primary">Add New User</a>
+
+<table class="table table-bordered mt-4">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Phone</th>
+            <th>Address</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var user in Model)
+        {
+            <tr>
+                <td>@user.Name</td>
+                <td>@user.Email</td>
+                <td>@user.Role</td>
+                <td>@user.PasswordHash</td>
+                <td>
+                    <a href="/Users/Details/@user.UserId" class="btn btn-info">Details</a>
+                    <a href="/Users/Edit/@user.UserId" class="btn btn-warning">Edit</a>
+                    <a href="/Users/Delete/@user.UserId" class="btn btn-danger">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+

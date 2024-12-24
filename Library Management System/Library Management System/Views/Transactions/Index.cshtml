@@ -1,0 +1,30 @@
+﻿@model IEnumerable<dynamic>
+
+<h2>Transactions</h2>
+<a href="/Transactions/Create" class="btn btn-primary">Issue New Book</a>
+
+<table class="table table-bordered mt-4">
+    <thead>
+        <tr>
+            <th>User</th>
+            <th>Book</th>
+            <th>Issue Date</th>
+            <th>Due Date</th>
+            <th>Return Date</th>
+            <th>Status</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var transaction in Model)
+        {
+            <tr>
+                <td>@transaction.Name</td>
+                <td>@transaction.Title</td>
+                <td>@transaction.IssueDate.ToShortDateString()</td>
+                <td>@transaction.DueDate.ToShortDateString()</td>
+                <td>@(transaction.ReturnDate?.ToShortDateString() ?? "Not Returned")</td>
+                <td>@transaction.Status</td>
+            </tr>
+        }
+    </tbody>
+</table>
